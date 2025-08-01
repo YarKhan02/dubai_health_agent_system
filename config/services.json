@@ -1,0 +1,250 @@
+{
+    "categories": [
+        "Wellness Packages",
+        "Cancer Screening",
+        "Hormone Profiles", 
+        "Blood Tests", 
+        "Vitamin Profiles", 
+        "Specialized Tests",
+        "IV Therapy"
+    ],
+    "wellness_packages": [
+        {
+            "id": "basic_health_check",
+            "name": "Basic Health Check Up",
+            "price": 1399,
+            "turnaround_time": "24 HOURS",
+            "category": "Wellness Packages",
+            "description": "Comprehensive basic health screening for overall wellness",
+            "tests": [
+                "Complete Blood Count",
+                "Lipid Profile", 
+                "Liver Function Tests", 
+                "Kidney Function Tests"
+            ],
+            "recommended_for": ["Adults", "Annual Check-up"]
+        },
+        {
+            "id": "cancer_profile_female",
+            "name": "Cancer Profile Female",
+            "price": 695,
+            "turnaround_time": "24 HOURS",
+            "category": "Cancer Screening",
+            "description": "Comprehensive cancer screening for women",
+            "tests": [
+                "CA 125",
+                "Breast Cancer Markers",
+                "Pap Smear",
+                "HPV DNA Test"
+            ],
+            "recommended_for": ["Women", "Cancer Prevention"]
+        },
+        {
+            "id": "cancer_profile_male",
+            "name": "Cancer Profile Male",
+            "price": 695,
+            "turnaround_time": "24 HOURS",
+            "category": "Cancer Screening", 
+            "description": "Comprehensive cancer screening for men",
+            "tests": [
+                "PSA (Prostate Specific Antigen)",
+                "Tumor Markers"
+            ],
+            "recommended_for": ["Men", "Cancer Prevention"]
+        },
+        {
+            "id": "comprehensive_wellness_women",
+            "name": "Comprehensive Wellness Women",
+            "price": 695,
+            "turnaround_time": "24 HOURS",
+            "category": "Wellness Packages",
+            "description": "Detailed health assessment tailored for women",
+            "tests": [
+                "Hormone Profile",
+                "Thyroid Function",
+                "Cancer Screening",
+                "Vitamin D",
+                "Complete Blood Count"
+            ],
+            "recommended_for": ["Women", "Comprehensive Health"]
+        },
+        {
+            "id": "comprehensive_wellness_men",
+            "name": "Comprehensive Wellness Men",
+            "price": 695,
+            "turnaround_time": "24 HOURS",
+            "category": "Wellness Packages",
+            "description": "Detailed health assessment tailored for men",
+            "tests": [
+                "Testosterone Level",
+                "Prostate Health",
+                "Cardiac Markers",
+                "Vitamin D",
+                "Complete Blood Count"
+            ],
+            "recommended_for": ["Men", "Comprehensive Health"]
+        },
+        {
+            "id": "ultimate_vitamin_profile",
+            "name": "Ultimate Vitamin Profile",
+            "price": 1899,
+            "turnaround_time": "1 Week",
+            "category": "Vitamin Profiles",
+            "description": "Comprehensive vitamin and mineral analysis",
+            "tests": [
+                "Comprehensive Vitamin Panel",
+                "Mineral Analysis",
+                "Nutritional Deficiency Screening"
+            ],
+            "recommended_for": ["Nutrition Optimization", "Wellness Enthusiasts"]
+        }
+    ],
+    "individual_tests": [
+        {
+            "id": "basic_10_tests",
+            "name": "Basic 10 Tests",
+            "price": 500,
+            "turnaround_time": "24 HOURS",
+            "category": "Blood Tests",
+            "description": "Essential blood tests for basic health screening"
+        },
+        {
+            "id": "complete_std_test",
+            "name": "Complete STD Test",
+            "price": 1150,
+            "turnaround_time": "24 HOURS",
+            "category": "Specialized Tests",
+            "description": "Comprehensive sexually transmitted disease screening"
+        },
+        {
+            "id": "men_hormone_profile",
+            "name": "Men Hormone Profile",
+            "price": 549,
+            "turnaround_time": "24 HOURS",
+            "category": "Hormone Profiles",
+            "description": "Detailed hormonal assessment for men"
+        },
+        {
+            "id": "women_hormone_profile",
+            "name": "Women Hormone Profile",
+            "price": 549,
+            "turnaround_time": "24 HOURS",
+            "category": "Hormone Profiles",
+            "description": "Comprehensive hormonal assessment for women"
+        }
+    ],
+    "iv_therapies": [
+        {
+            "id": "multivitamins_iv",
+            "name": "Multivitamins IV Therapy",
+            "price": 450,
+            "cost_price": 75,
+            "category": "IV Therapy",
+            "description": "Comprehensive multivitamin intravenous treatment to boost overall nutrition",
+            "benefits": [
+                "Replenish essential vitamins",
+                "Improve energy levels",
+                "Support immune system"
+            ],
+            "recommended_for": ["Individuals with nutritional deficiencies", "Wellness enthusiasts"]
+        },
+        {
+            "id": "nad_100mg_iv",
+            "name": "NAD 100mg IV Therapy",
+            "price": 699,
+            "cost_price": 200,
+            "category": "IV Therapy",
+            "description": "Nicotinamide Adenine Dinucleotide (NAD) therapy for cellular health and energy",
+            "benefits": [
+                "Boost metabolism",
+                "Enhance cognitive function",
+                "Support cellular repair"
+            ],
+            "recommended_for": ["Anti-aging", "Cognitive enhancement"]
+        },
+        {
+            "id": "nad_250mg_iv",
+            "name": "NAD 250mg IV Therapy",
+            "price": 1100,
+            "cost_price": 250,
+            "category": "IV Therapy",
+            "description": "Extended NAD therapy for comprehensive cellular rejuvenation",
+            "benefits": [
+                "Improved energy",
+                "Enhanced mental clarity",
+                "Cellular regeneration"
+            ],
+            "recommended_for": ["Intensive wellness", "Neurological health"]
+        },
+        {
+            "id": "vitamin_d_iv",
+            "name": "Vitamin D (30,000 IU) IV Therapy",
+            "price": 450,
+            "cost_price": 90,
+            "category": "IV Therapy",
+            "description": "High-dose Vitamin D intravenous treatment",
+            "benefits": [
+                "Bone health",
+                "Immune system support",
+                "Mood regulation"
+            ],
+            "recommended_for": ["Vitamin D deficiency", "Bone health"]
+        },
+        {
+            "id": "immune_boost_iv",
+            "name": "Immune Boost IV Therapy",
+            "price": 800,
+            "cost_price": 260,
+            "category": "IV Therapy",
+            "description": "Specialized IV treatment to enhance immune system function",
+            "benefits": [
+                "Strengthen immune response",
+                "Reduce inflammation",
+                "Support overall health"
+            ],
+            "recommended_for": ["Immune system support", "Recovery"]
+        },
+        {
+            "id": "energy_boost_iv",
+            "name": "Energy Boost & Fitness Support IV",
+            "price": 800,
+            "cost_price": 260,
+            "category": "IV Therapy",
+            "description": "Performance-enhancing IV therapy for athletes and active individuals",
+            "benefits": [
+                "Increase energy levels",
+                "Improve athletic performance",
+                "Faster recovery"
+            ],
+            "recommended_for": ["Athletes", "Fitness enthusiasts"]
+        },
+        {
+            "id": "wellness_vip_iv",
+            "name": "Wellness for VIP IV Therapy",
+            "price": 1450,
+            "cost_price": 400,
+            "category": "IV Therapy",
+            "description": "Comprehensive VIP wellness IV treatment",
+            "benefits": [
+                "Total body rejuvenation",
+                "Advanced nutrient infusion",
+                "Personalized wellness approach"
+            ],
+            "recommended_for": ["Executive health", "Comprehensive wellness"]
+        },
+        {
+            "id": "glowing_skin_iv",
+            "name": "Glowing & Radiant Skin IV Therapy",
+            "price": 800,
+            "cost_price": 260,
+            "category": "IV Therapy",
+            "description": "Beauty-focused IV treatment for skin health and radiance",
+            "benefits": [
+                "Improve skin hydration",
+                "Boost collagen production",
+                "Enhance natural glow"
+            ],
+            "recommended_for": ["Skin health", "Beauty enhancement"]
+        }
+    ]
+} 
