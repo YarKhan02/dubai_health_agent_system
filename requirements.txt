@@ -1,6 +1,7 @@
 # Core Web Framework
-fastapi==0.95.1
-uvicorn==0.22.0
+fastapi==0.104.1
+uvicorn==0.24.0
+python-multipart==0.0.6
 
 # WhatsApp and Messaging
 twilio==8.2.0
@@ -14,14 +15,22 @@ langdetect==1.0.9
 stripe==5.4.0
 
 # Database
-sqlite3
+# sqlite3
 
 # Dashboard
 streamlit==1.22.0
 
 # Utilities
 python-dotenv==1.0.0
-pydantic==1.10.7
+pydantic==2.5.0
+
+# Excel Processing
+pandas==2.0.3
+openpyxl==3.1.2
+
+# Fuzzy String Matching for Excel Chatbot
+fuzzywuzzy==0.18.0
+python-Levenshtein==0.21.1
 
 # Optional: Logging and Monitoring
 loguru==0.7.0 

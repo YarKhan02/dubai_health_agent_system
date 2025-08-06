@@ -4,6 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
 from twilio.twiml.messaging_response import MessagingResponse
 from gpt4_response import generate_gpt4_response
+from excel_chatbot import excel_chatbot  # Import Excel chatbot
 from booking import save_appointment
 from payments import create_payment_link
 from utils import validate_twilio_request
@@ -43,19 +44,24 @@ async def handle_whatsapp_message(request: Request):
     response = MessagingResponse()
 
     try:
+        # Enhanced message processing with Excel chatbot integration
+        response_message = ""
+        
         # Detect intent and generate appropriate response
-        if "book" in message_body.lower():
+        if any(keyword in message_body.lower() for keyword in ["book", "appointment", "schedule"]):
             # Appointment booking flow
             appointment_details = save_appointment(from_number, message_body)
-            response_message = f"✅ Appointment booked: {appointment_details}"
-        elif "pay" in message_body.lower():
+            response_message = f"Appointment booked: {appointment_details}"
+            
+        elif any(keyword in message_body.lower() for keyword in ["pay", "payment", "bill"]):
             # Payment link generation
             payment_link = create_payment_link(from_number)
-            response_message = f"💳 Complete your payment: {payment_link}"
+            response_message = f"Complete your payment: {payment_link}"
+            
         else:
-            # Default to GPT-4 response
+            # Use enhanced GPT-4 response with Excel chatbot integration
             response_message = generate_gpt4_response(message_body)
-        
+
         # Log the chat interaction
         db.log_chat(
             phone_number=from_number, 
@@ -75,6 +81,8 @@ async def handle_whatsapp_message(request: Request):
             direction='error'
         )
         response.message("Sorry, something went wrong. Please try again later.")
+
+    print(str(response))
 
     return str(response)
 
@@ -112,6 +120,32 @@ async def handle_instagram_message(request: Request):
 def health_check():
     """Simple health check endpoint"""
     return {"status": "healthy"}
+
+@app.post("/test-chatbot")
+async def test_chatbot_endpoint(request: Request):
+    """Test endpoint for the Excel-based chatbot"""
+    try:
+        data = await request.json()
+        query = data.get('query', '')
+        
+        if not query:
+            raise HTTPException(status_code=400, detail="Query is required")
+        
+        # Get response from Excel chatbot
+        excel_response = excel_chatbot.generate_response(query)
+        
+        # Get enhanced GPT-4 response
+        gpt4_response = generate_gpt4_response(query)
+        
+        return {
+            "query": query,
+            "excel_response": excel_response,
+            "gpt4_response": gpt4_response,
+            "status": "success"
+        }
+    
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
 
 if __name__ == "__main__":
     import uvicorn
