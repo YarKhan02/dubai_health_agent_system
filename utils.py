@@ -26,7 +26,7 @@ def validate_phone_number(phone_number):
     
     return None
 
-def validate_twilio_request(request):
+def validate_twilio_request(request, form_data):
     """
     Validate incoming Twilio webhook request
     
@@ -39,13 +39,13 @@ def validate_twilio_request(request):
         url = request.url._url
         
         # Get form data
-        form_data = request.form()
+        # form_data = request.form()
         
         # Initialize Twilio validator
         validator = RequestValidator(os.getenv('TWILIO_AUTH_TOKEN'))
         
         # Validate request
-        return validator.validate(url, form_data, signature)
+        return validator.validate(url, dict(form_data), signature)
     
     except Exception as e:
         print(f"Twilio Request Validation Error: {e}")

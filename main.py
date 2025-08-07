@@ -10,6 +10,7 @@ from payments import create_payment_link
 from utils import validate_twilio_request
 from database import db
 from instagram_handler import instagram_handler  # Import Instagram handler
+from fastapi.responses import Response
 
 # Load environment variables
 load_dotenv()
@@ -31,10 +32,6 @@ async def handle_whatsapp_message(request: Request):
     """
     Webhook endpoint for handling incoming WhatsApp messages
     """
-    # Validate Twilio request (optional but recommended)
-    # if not validate_twilio_request(request):
-    #     raise HTTPException(status_code=403, detail="Invalid Twilio request")
-
     # Parse incoming form data
     form_data = await request.form()
     from_number = form_data.get('From', '')
@@ -84,68 +81,7 @@ async def handle_whatsapp_message(request: Request):
 
     print(str(response))
 
-    return str(response)
-
-@app.get("/webhook/instagram")
-async def instagram_webhook_verify(
-    hub_mode: str = None, 
-    hub_challenge: str = None, 
-    hub_verify_token: str = None
-):
-    """
-    Instagram webhook verification endpoint
-    """
-    challenge = instagram_handler.verify_webhook(hub_mode, hub_challenge, hub_verify_token)
-    
-    if challenge:
-        return challenge
-    
-    raise HTTPException(status_code=403, detail="Verification failed")
-
-@app.post("/webhook/instagram")
-async def handle_instagram_message(request: Request):
-    """
-    Webhook endpoint for handling incoming Instagram messages
-    """
-    try:
-        payload = await request.json()
-        response = instagram_handler.handle_incoming_message(payload)
-        return {"status": "success", "response": response}
-    
-    except Exception as e:
-        print(f"Instagram Webhook Error: {e}")
-        raise HTTPException(status_code=500, detail="Error processing message")
-
-@app.get("/health")
-def health_check():
-    """Simple health check endpoint"""
-    return {"status": "healthy"}
-
-@app.post("/test-chatbot")
-async def test_chatbot_endpoint(request: Request):
-    """Test endpoint for the Excel-based chatbot"""
-    try:
-        data = await request.json()
-        query = data.get('query', '')
-        
-        if not query:
-            raise HTTPException(status_code=400, detail="Query is required")
-        
-        # Get response from Excel chatbot
-        excel_response = excel_chatbot.generate_response(query)
-        
-        # Get enhanced GPT-4 response
-        gpt4_response = generate_gpt4_response(query)
-        
-        return {
-            "query": query,
-            "excel_response": excel_response,
-            "gpt4_response": gpt4_response,
-            "status": "success"
-        }
-    
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+    return Response(content=str(response), media_type="application/xml")
 
 if __name__ == "__main__":
     import uvicorn
